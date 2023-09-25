@@ -1,10 +1,10 @@
 import React from "react";
 import HogTile from './HogTile';
 
-function HogTiles({ hogs, dispConditions }) {
-    // console.log("In HogTiles, hogs: ", hogs);
+function HogTiles({ hogList, dispConditions }) {
+    // console.log("In HogTiles, hogList: ", hogList);
 
-    const hogsFiltered = dispConditions.isGreasedOn ? (hogs.filter(hog => hog.greased)) : [...hogs];
+    const hogsFiltered = dispConditions.isGreasedOn ? (hogList.filter(hog => hog.greased)) : [...hogList];
     const hogsDispList = dispConditions.sortBy === 'None' ? hogsFiltered : 
         (dispConditions.sortBy === 'Name' ? hogsFiltered.sort((a, b) => (a.name <= b.name ? -1 : 1)) : 
             hogsFiltered.sort((a, b) => a.weight - b.weight));

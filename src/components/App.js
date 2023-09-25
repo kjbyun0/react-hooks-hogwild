@@ -4,18 +4,26 @@ import Nav from "./Nav";
 import hogs from "../porkers_data";
 
 import HogTiles from "./HogTiles";
+import NewHogForm from "./NewHogForm";
 
 function App() {
 	const [dispConditions, setDispConditions] = useState({
 		isGreasedOn: false,
 		sortBy: 'None',
 	});
-	console.log("In App, dispConditions: ", dispConditions);
+	const [hogList, setHogList] = useState(hogs);
+	
+	function addNewHog(hogObj) {
+		setHogList([...hogList, hogObj]);
+	}
+
+	// console.log("In App, dispConditions: ", dispConditions);
 
 	return (
 		<div className="App">
-			<Nav dispConditions={dispConditions} setDispConditions={setDispConditions}/>
-			<HogTiles hogs={hogs} dispConditions={dispConditions} />
+			<Nav dispConditions={dispConditions} setDispConditions={setDispConditions} />
+			<NewHogForm addNewHog={addNewHog} />
+			<HogTiles hogList={hogList} dispConditions={dispConditions} />
 		</div>
 	);
 }
